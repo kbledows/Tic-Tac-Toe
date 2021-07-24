@@ -29,24 +29,28 @@ def printboard():
 
 #Player's move. 9 possible positions
 def playerMove():
-	print("Positions are as follows:")
-	print("1, 2, 3")
-	print("4, 5, 6")
-	print("7, 8, 9")
-	position = input("Please select a position.")
-	position = int(position)
 	#positionSpot is the real spot on the board and is calculated using the below formula.
-	positionSpot = gameboard[(position - 1)//3][(position - 1) % 3]
-	while positionSpot != EMPTY:
-		print("Invalid positon, already marked by player or computer. please try again.")
+	#positionSpot = gameboard[(position - 1)//3][(position - 1) % 3]
+	while True:
 		print("Positions are as follows:")
 		print("1, 2, 3")
 		print("4, 5, 6")
 		print("7, 8, 9")
-		position = (input("Please select a position."))
+		position = input("Please select a position.")
+		if not position.isdigit():
+			print("input must be a number 1-9")
+			continue
 		position = int(position)
+		if position not in range(1,10):
+			print("Invalid position, choose a number 1-9")
+			continue
 		positionSpot = gameboard[(position - 1)//3][(position - 1) % 3]
-	position = int(position)
+		if positionSpot != EMPTY:
+			print("Invalid positon, already marked by player or computer. please try again.")
+			continue
+		else:
+			break
+
 	gameboard[(position - 1)//3][(position - 1) % 3] = 'X'
 
 #Insert Letter method used for the computer. inserts letter O in given row/column
@@ -122,8 +126,6 @@ def checkFull():
 
 
 def winCondition(board):
-	win = False
-	team = None
 	for row in board:
 		if row[0] == row[1] == row[2] != EMPTY:
 			return True, row[0]
@@ -139,8 +141,8 @@ def winCondition(board):
 
 
 def main():
-	boardFull = False
-	wC = False
+	#boardFull = False
+	#wC = False
 	print("Welcome to Tic Tac Toe")
 	time.sleep(0.5)
 	printboard()
@@ -150,21 +152,21 @@ def main():
 	time.sleep(0.5)
 	print("Computer == [ O ]")
 	print("The computer ( O ) moves first.")
+	player = 0 # computer
 	while winCondition(gameboard)[0] == False:
-		if checkFull() == True:
+		if checkFull() == True or winCondition(gameboard)[0] == True:
 			break
-		computerMove()
-		print("Computer is thinking...")
-		printboard()
-		#wC = (winCondition(gameboard)[0])
-		print("The computer has chosen the above move.")
-		if checkFull() == True:
-			break
-		playerMove()
-		printboard()
-		boardFull = checkFull()
+		if player % 2 == 0: # computer move
+			computerMove()
+			print("Computer is thinking...")
+			printboard()
+			print("The computer has chosen the above move.")
+		else:
+			playerMove()
+			printboard()
+		player += 1
 
-	if wC == True:
+	if winCondition(gameboard)[0] == True:
 		if winCondition(gameboard)[1]  == "X":
 			print("Player has won :)")
 			return
