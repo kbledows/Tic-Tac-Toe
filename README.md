@@ -12,6 +12,7 @@ I wanted to practice learning a new algorithm that I did not learn in university
 
 ## Overview
 To play, simply run the python script in your terminal. You will be greated by an 3x3 ascii Tic Tac Toe board. From here, simply select the squares you want to place your 'X' in.
+
 <img width="435" alt="image" src="https://user-images.githubusercontent.com/32736495/195751974-0d18e7d7-4e2c-47b0-86a6-c3da8341c467.png">
 
 <img width="442" alt="image" src="https://user-images.githubusercontent.com/32736495/195752036-0b49ca66-4824-4b3c-9a73-33e88454191a.png">
