@@ -1,5 +1,4 @@
 # Tic-Tac-Toe
-Created by Konrad Bledowski  
 Tic Tac Toe game with playable AI. Includes minimax algorithm for AI decision making.
 ### What is this?  
 This repo features a playable Tic Tac Toe game against an unbeatable AI opponent. The best possible outcome against the computer is a Tie! Don't believe me? Try to beat my AI by running the python script.
